@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">BBC News Reader</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_feed_selection">Select Feeds</string>
+    <string name="selected_feed_key">selected_feed</string>
+    <string name="selected_feed_key2">selected_feed</string>
+    <string-array name="feeds">
+        <item>General</item>
+        <item>World</item>
+        <item>UK</item>
+    </string-array>
+    <string-array name="feed_values">
+        <item>http://feeds.bbci.co.uk/news/rss.xml?edition=uk</item>
+        <item>http://feeds.bbci.co.uk/news/world/rss.xml?edition=uk</item>
+        <item>http://feeds.bbci.co.uk/news/uk/rss.xml?edition=uk</item>
+    </string-array>
+</resources>
