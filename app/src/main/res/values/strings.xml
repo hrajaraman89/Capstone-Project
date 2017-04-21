@@ -17,4 +17,6 @@
         <item>http://feeds.bbci.co.uk/news/world/rss.xml?edition=uk</item>
         <item>http://feeds.bbci.co.uk/news/uk/rss.xml?edition=uk</item>
     </string-array>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

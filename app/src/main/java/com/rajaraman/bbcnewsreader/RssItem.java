@@ -1,6 +1,7 @@
 package com.rajaraman.bbcnewsreader;
 
 import com.github.gfx.android.orma.annotation.Column;
+import com.github.gfx.android.orma.annotation.PrimaryKey;
 import com.github.gfx.android.orma.annotation.Setter;
 import com.github.gfx.android.orma.annotation.Table;
 
@@ -12,7 +13,7 @@ public class RssItem {
     @Column
     public final String link;
 
-    @Column
+    @PrimaryKey
     public final String guid;
 
     @Column

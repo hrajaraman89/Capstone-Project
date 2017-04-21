@@ -96,9 +96,33 @@ public class MainActivity extends AppCompatActivity {
 
         RssLoader loader = new RssLoader(rssUrl, new Consumer<List<RssItem>>() {
             @Override
-            public void accept(List<RssItem> rssItems) {
+            public void accept(final List<RssItem> rssItems) {
                 adapter.setItems(rssItems);
                 swipeRefreshLayout.setRefreshing(false);
+
+                final OrmaDatabase db = OrmaDatabase.builder(MainActivity.this)
+                        .name("articles.db")
+                        .build();
+
+                Runnable r = new Runnable() {
+                    @Override
+                    public void run() {
+                        for (RssItem r : rssItems) {
+
+                            if (db.selectFromRssItem()
+                                    .guidEq(r.guid)
+                                    .execute()
+                                    .getCount() == 0) {
+                                db.insertIntoRssItem(r);
+                            }
+                        }
+                    }
+                };
+
+                Thread t = new Thread(r);
+                t.start();
+
+
             }
         });
 
