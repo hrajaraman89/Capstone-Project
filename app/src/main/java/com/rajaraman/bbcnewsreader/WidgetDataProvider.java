@@ -7,16 +7,12 @@ import android.graphics.Color;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
-/**
- * Created by hrajaram on 2/25/17.
- */
-
-public class WidgetDataProvider implements RemoteViewsService.RemoteViewsFactory {
+class WidgetDataProvider implements RemoteViewsService.RemoteViewsFactory {
     private final OrmaDatabase db;
     private Context mContext = null;
     private Cursor cursor;
 
-    public WidgetDataProvider(Context context, Intent intent) {
+    WidgetDataProvider(Context context, Intent intent) {
         mContext = context;
         this.db = OrmaDatabase.builder(mContext)
                 .name("articles.db")
