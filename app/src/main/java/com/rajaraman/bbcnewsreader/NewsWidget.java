@@ -21,7 +21,7 @@ public class NewsWidget extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager,
                          int[] appWidgetIds) {
         for (int widgetId : appWidgetIds) {
-            RemoteViews mView = initViews(context, appWidgetManager, widgetId);
+            RemoteViews mView = initViews(context, widgetId);
             appWidgetManager.updateAppWidget(widgetId, mView);
         }
 
@@ -30,7 +30,7 @@ public class NewsWidget extends AppWidgetProvider {
 
 
     private RemoteViews initViews(Context context,
-                                  AppWidgetManager widgetManager, int widgetId) {
+                                  int widgetId) {
 
         RemoteViews mView = new RemoteViews(context.getPackageName(),
                 R.layout.news_widget);

@@ -1,37 +1,27 @@
 package com.rajaraman.bbcnewsreader;
 
-import com.github.gfx.android.orma.annotation.Column;
-import com.github.gfx.android.orma.annotation.PrimaryKey;
-import com.github.gfx.android.orma.annotation.Setter;
-import com.github.gfx.android.orma.annotation.Table;
+import com.google.gson.Gson;
 
-@Table
 public class RssItem {
-    @Column
-    public final String title;
+    public String title;
 
-    @Column
-    public final String link;
+    public String link;
 
-    @PrimaryKey
-    public final String guid;
+    public String guid;
 
-    @Column
-    public final String description;
+    public String description;
 
-    @Column(indexed = true)
-    public final String pubDate;
+    public String pubDate;
 
-    @Column
-    public final String thumbnailUrl;
+    public String thumbnailUrl;
 
-    @Column
-    public final int thumbnailWidth;
+    public int thumbnailWidth;
 
-    @Column
-    public final int thumbnailHeight;
+    public int thumbnailHeight;
 
-    @Setter
+    public RssItem() {
+    }
+
     public RssItem(String title,
                    String link,
                    String guid,
@@ -48,5 +38,9 @@ public class RssItem {
         this.thumbnailUrl = thumbnailUrl;
         this.thumbnailWidth = thumbnailWidth;
         this.thumbnailHeight = thumbnailHeight;
+    }
+
+    public String toString() {
+        return new Gson().toJson(this);
     }
 }

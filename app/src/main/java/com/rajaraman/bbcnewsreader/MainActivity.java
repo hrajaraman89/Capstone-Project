@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.rajaraman.bbcnewsreader.util.Consumer;
 
 import org.greenrobot.eventbus.EventBus;
@@ -22,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private RssAdapter adapter;
+
+    private DatabaseReference mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         fetch();
 
         this.swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -99,34 +106,18 @@ public class MainActivity extends AppCompatActivity {
                 adapter.setItems(rssItems);
                 swipeRefreshLayout.setRefreshing(false);
 
-                final OrmaDatabase db = OrmaDatabase.builder(MainActivity.this)
-                        .name("articles.db")
-                        .build();
+                for (RssItem r : rssItems) {
 
-                Runnable r = new Runnable() {
-                    @Override
-                    public void run() {
-                        for (RssItem r : rssItems) {
-
-                            if (db.selectFromRssItem()
-                                    .guidEq(r.guid)
-                                    .execute()
-                                    .getCount() == 0) {
-                                db.insertIntoRssItem(r);
-                            }
-                        }
-                    }
-                };
-
-                Thread t = new Thread(r);
-                t.start();
-
-
+                    mDatabase.child("rssItems")
+                            .child(r.guid.hashCode() + "")
+                            .setValue(r);
+                }
             }
         });
 
         loader.execute();
     }
+
 
     static class FeedChangedEvent {
 

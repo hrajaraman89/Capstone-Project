@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "549638217156",
+    "firebase_url": "https://capstone-891c0.firebaseio.com",
+    "project_id": "capstone-891c0",
+    "storage_bucket": "capstone-891c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549638217156:android:63704f9d561812f1",
+        "android_client_info": {
+          "package_name": "com.rajaraman.bbcnewsreader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549638217156-6bgi5n94uvsshoan51m6dhhd8b1vbqaj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1AI3XkMdq-Pp_tzu5cS3yjdEE5N2f1DI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
